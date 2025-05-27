@@ -1,0 +1,21 @@
+h1 {
+  @apply text-4xl font-bold;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+}
+p,
+span {
+  @apply text-base font-regular;
+}
+a {
+  @apply text-inherit;
+}
+small {
+  @apply text-sm font-regular;
+}
+
+@utility lead {
+  @apply text-xl;
+}

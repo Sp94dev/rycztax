@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+:root {
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+
+  font-family: var(--font-family);
+  font-size: 14px;
+}
+
+@theme {
+  --color-background: var(--surface-100);
+  --color-foreground: var(--gray-50);
+  --border-color: var(--gray-200);
+
+  --font-weight-regular: 400;
+  --font-weight-bold: 400;
+}
+
+@import './app/theme/tailwind/typography.css';
+@import './app/theme/tailwind/utilities.css';

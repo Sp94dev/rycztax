@@ -1,17 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  host: {
+    class: 'flex flex-col h-screen p-4 bg-background',
+  },
+  template: ` <router-outlet />`,
 })
-export class AppComponent {
-  title = 'rycztax';
-
-  auth = inject(Auth);
-
-  constructor() {}
-}
+export class AppComponent {}

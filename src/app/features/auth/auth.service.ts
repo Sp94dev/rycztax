@@ -1,7 +1,15 @@
-import { DestroyRef, inject, Injectable, Injector } from '@angular/core';
+import {
+  DestroyRef,
+  inject,
+  Injectable,
+  Injector,
+  resource,
+  Signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   Auth,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   user,
@@ -27,7 +35,7 @@ export class AuthService {
               replaceUrl: true,
               onSameUrlNavigation: 'reload',
             })
-          : this.#router.navigate(['/home'], {
+          : this.#router.navigate(['/login'], {
               replaceUrl: true,
               onSameUrlNavigation: 'reload',
             });
@@ -35,10 +43,40 @@ export class AuthService {
     )
     .subscribe();
 
-  login(email: string, password: string) {
-    return createResource(this.#injector, () =>
-      signInWithEmailAndPassword(this.#auth, email, password),
-    );
+  login(credentials: Signal<{ email: string; password: string } | undefined>) {
+    return resource({
+      request: () => ({ credentials: credentials() }),
+      loader: ({ request }) => {
+        const credentials = request.credentials;
+        if (!credentials) {
+          return Promise.resolve([] as unknown);
+        }
+        return signInWithEmailAndPassword(
+          this.#auth,
+          credentials.email,
+          credentials.password,
+        );
+      },
+    });
+  }
+
+  register(
+    credentials: Signal<{ email: string; password: string } | undefined>,
+  ) {
+    return resource({
+      request: () => ({ credentials: credentials() }),
+      loader: ({ request }) => {
+        const credentials = request.credentials;
+        if (!credentials) {
+          return Promise.resolve([] as unknown);
+        }
+        return createUserWithEmailAndPassword(
+          this.#auth,
+          credentials.email,
+          credentials.password,
+        );
+      },
+    });
   }
 
   logout() {
