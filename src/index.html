@@ -12,8 +12,20 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <script
+      async
+      src="https://docs.opencv.org/4.9.0/opencv.js"
+      onload="onOpenCvReady();"
+    ></script>
   </head>
   <body>
     <app-root></app-root>
+    <script>
+      // Ta funkcja jest wywoływana przez atrybut `onload` powyżej.
+      // Tworzymy prosty event, na który nasza aplikacja będzie mogła nasłuchiwać.
+      function onOpenCvReady() {
+        document.body.dispatchEvent(new CustomEvent('opencv-ready'));
+      }
+    </script>
   </body>
 </html>

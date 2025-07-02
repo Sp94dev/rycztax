@@ -1,17 +1,12 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { ScanFileComponent } from '../files/scan-file.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [JsonPipe, AsyncPipe],
+  imports: [ScanFileComponent],
   template: `
-    <div>
-      <h1>Strona Prywatna</h1>
-      @let user = user$ | async;
-      <p>Witaj {{ user?.displayName }}</p>
-      <pre>{{ user | json }}</pre>
-    </div>
+    <app-scan-file />
     <button (click)="logout()">Logout</button>
   `,
 })

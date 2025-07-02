@@ -51,4 +51,16 @@ export const myPreset = definePreset(Nora, {
       paddingY: '0.5rem',
     },
   },
+  components: {
+    datatable: {
+      css: ({ dt }: any) => `
+      .p-datatable {
+        td, th {
+          padding: ${dt('form.field.padding.x')} ${dt('form.field.padding.y')}
+         }
+      }
+  
+  `,
+    },
+  },
 });
