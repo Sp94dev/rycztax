@@ -59,7 +59,6 @@ export const myPreset = definePreset(Nora, {
           padding: ${dt('form.field.padding.x')} ${dt('form.field.padding.y')}
          }
       }
-  
   `,
     },
   },

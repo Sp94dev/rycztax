@@ -25,11 +25,19 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'dashboard',
+    path: '',
     canActivate: [isAuthenticatedGuard],
     loadComponent: () =>
-      import('./features/home/dashboard.component').then(
-        (m) => m.DashboardComponent,
-      ),
+      import('./shared/ui/layout.component').then((m) => m.LayoutComponent),
+    children: [
+      {
+        path: 'dashboard',
+        canActivate: [isAuthenticatedGuard],
+        loadComponent: () =>
+          import('./features/files/pages/files.page.component').then(
+            (m) => m.FilesPageComponent,
+          ),
+      },
+    ],
   },
 ];
