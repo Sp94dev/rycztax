@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
     provideStorage(() => {
       const storage = getStorage();
       if (environment.useEmulators) {
-        connectStorageEmulator(storage, 'http://127.0.0.1', 9999);
+        connectStorageEmulator(storage, 'localhost', 9199);
       }
       return storage;
     }),

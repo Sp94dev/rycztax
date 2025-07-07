@@ -1,0 +1,19 @@
+{
+  "name": "uploads/1751663708188.pdf",
+  "bucket": "rycztax.firebasestorage.app",
+  "metageneration": 1,
+  "generation": 1751663708208,
+  "contentType": "application/pdf",
+  "storageClass": "STANDARD",
+  "contentDisposition": "inline",
+  "downloadTokens": [
+    "3aec42f9-0e7c-4b9d-a5c2-54ec7d891b7b"
+  ],
+  "etag": "xETnJACTIh6yHWl4m45Gd7UyU/M",
+  "customMetadata": {},
+  "timeCreated": "2025-07-04T21:15:08.208Z",
+  "updated": "2025-07-04T21:15:08.208Z",
+  "size": 55976,
+  "md5Hash": "PybBZ90pF5ZFAuHR1UXvxA==",
+  "crc32c": "3088473810"
+}
