@@ -5,6 +5,7 @@
 Rycztax to aplikacja PWA (Progresywna Aplikacja Webowa) stworzona z myślą o freelancerach i właścicielach mikro-firm w Polsce. Jej głównym celem jest zautomatyzowanie procesu zarządzania fakturami kosztowymi.
 
 **Wizja:** Aplikacja ma działać jak inteligentny asystent, który po zrobieniu zdjęcia faktury:
+
 - Automatycznie odczytuje kluczowe dane (NIP, daty, kwoty, etc.) za pomocą modeli językowych (LLM).
 - Generuje ustandaryzowaną nazwę dla pliku.
 - Bezpiecznie przechowuje dokumenty.
@@ -23,9 +24,9 @@ Rycztax to aplikacja PWA (Progresywna Aplikacja Webowa) stworzona z myślą o fr
 
 - **Framework Frontendowy:** Angular (wersja ~19.2.0)
 - **UI Kit / Stylowanie:**
-    - PrimeNG
-    - Tailwind CSS
-    - `tailwindcss-primeui` do integracji obu bibliotek.
+  - PrimeNG
+  - Tailwind CSS
+  - `tailwindcss-primeui` do integracji obu bibliotek.
 - **Backend / Baza Danych:** Firebase (`@angular/fire`)
 - **Testowanie:** Karma, Jasmine
 - **Zależności kluczowe:** `rxjs`, `zone.js`, `tslib`
@@ -51,8 +52,12 @@ Rycztax to aplikacja PWA (Progresywna Aplikacja Webowa) stworzona z myślą o fr
 Aplikacja jest zbudowana w oparciu o architekturę komponentową z leniwym ładowaniem (lazy loading) dla poszczególnych widoków, co jest zdefiniowane w `src/app/app.routes.ts`.
 
 **Główne ścieżki:**
+
 - `/login`: Strona logowania.
 - `/create-account`: Strona tworzenia konta.
 - `/dashboard`: Główny panel po zalogowaniu, chroniony przez `isAuthenticatedGuard`.
 
 Trasy publiczne (`/login`, `/create-account`) są chronione przez `isNotAuthenticatedGuard`, aby uniemożliwić dostęp zalogowanym użytkownikom.
+
+**Wazne:**
+CZESC KTORA ZAPISUJE STAN EMULATOROW MA BYC NIETYKALNA I OBOWIAZKOWA. NIGDY NIE WOLNO CI JEJ WYLACZYCZ.

@@ -49,3 +49,7 @@ src/environments/environment.ts
 src/environments/environment.development.ts
 src/environments/environment.prod.ts
 functions/node_modules/**
+functions/node_modules
+functions/lib/**
+functions/lib
+functions/libs/**

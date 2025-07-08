@@ -19,7 +19,8 @@
     "module": "ES2022",
     "paths": {
       "shared/*": ["./src/app/shared/*"],
-      "auth/*": ["./src/app/features/auth/*"]
+      "auth/*": ["./src/app/features/auth/*"],
+      "@shared/*": ["./libs/shared/*"]
     }
   },
   "angularCompilerOptions": {
