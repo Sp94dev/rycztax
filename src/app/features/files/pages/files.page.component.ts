@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
+import { AuthService } from 'auth/auth.service';
 import { ref, uploadBytes } from 'firebase/storage';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -61,6 +63,10 @@ import { Observable } from 'rxjs';
 export class FilesPageComponent {
   private storage: Storage = inject(Storage);
   private firestore: Firestore = inject(Firestore);
+  private authService = inject(AuthService);
+
+  #user = toSignal(this.authService.user);
+
   selectedFile: File | null = null;
   invoices$: Observable<any[]>;
 
@@ -78,10 +84,13 @@ export class FilesPageComponent {
   }
 
   async uploadFile(files: File[]) {
+    const userId = this.#user()?.uid;
+    if (!userId) {
+      return;
+    }
+    const userFilePath = `users/${userId}/uploads`;
     const toUploadFiles = files.map((file) => {
-      const fileExtension = file.name.split('.').pop();
-      const newFileName = `${new Date().getTime()}.${fileExtension}`;
-      const storageRef = ref(this.storage, `uploads/${newFileName}`);
+      const storageRef = ref(this.storage, `${userFilePath}/${file.name}`);
       return uploadBytes(storageRef, file);
     });
 
