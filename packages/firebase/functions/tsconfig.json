@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2021"],
+    "module": "nodenext",
+    "target": "ES2021",
+    "moduleResolution": "nodenext",
+    "outDir": "lib",
+    "noUnusedLocals": false,
+    "rootDir": ".",
+    "sourceMap": true,
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@shared/*": ["../libs/shared/*"]
+    }
+  },
+  "compileOnSave": true,
+  "include": ["src"]
+}

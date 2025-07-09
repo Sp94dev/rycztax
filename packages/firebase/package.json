@@ -1,0 +1,12 @@
+{
+  "name": "@rycztax/firebase",
+  "version": "0.0.0",
+  "scripts": {
+    "build:functions": "rm -rf functions/lib && cd functions && npm run build && cd ..",
+    "emulators": "firebase emulators:start --only auth,firestore,storage,functions --import=./firebase-seed-data  --export-on-exit ./firebase-seed-data"
+  },
+  "private": true,
+  "devDependencies": {
+    "firebase-tools": "^13.35.1"
+  }
+}

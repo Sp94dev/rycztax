@@ -1,0 +1,98 @@
+Dodaj funkcje firebase functions ktora:
+ - bedzie wywolywana w momencie zaladowania pliku do storage 
+ - odczyta za posrednictwem documents api od google dane z pliku
+ - zmieni nazwe pliku na nastepujace: RRRR-MM-DD_NIP-WYSTAWCY_X.pdf gdzie:
+        - RRRR-MM-DD -> data sprzedazy faktury
+        - NIP-WYSTAWCY -> numer NIP osoby wystawiającej fakture
+        - X -> nr faktury, w przypadku braku numberu, policz faktury ktore mają w nazwie RRRR-MM-DD_NIP-WYSTAWCY i dodaj liczbe porzadkowa jako X, czylu jest juz istenie faktura RRRR-MM-DD_NIP-WYSTAWCY nastepna ma byc RRRR-MM-DD_NIP-WYSTAWCY_1
+ - zapisze plik z nowa nazwa w katalogu "proceeds" a poprzedni usunie
+Funkcja ma wykorzystywać typescript, stwórz wymagane modele jak Invoice w katalogu src/files/models/Invoice.ts
+Przed przystąpieniem do implementacji przeprowadz sesje pytan aby doprecyzowac szczegoły
+Stosuj podejscie porgramowania funkcyjnego 
+
+1. Nie nie mam zadnego modelu i chcialbym uzyc czegos prostego, taniego i gotowego do uzycia.
+2
+    - Tak, mapowanie powinno wynikac z tego jakie wartosci odczytuje model i jak je nazywa
+    - zgadza sie
+3
+    - dobra sugestia, ale moze nie errors ale bardziej "require-action"
+    - tak samo, przenosimy do action-required
+4 Chcialbym moc uzywac tego modelu w obu czesciach zeby miec spojnosc, wydzielmy osobny modul do tego celu
+
+Nie wiem jak to powinno potem dzialac dla wielu uzytkownikow, co sugerujesz? tworzyc katalog per user gdzie w srodku bedzie /uploads, /require-actions i /proceeds?
+
+================================================================================================================================================
+
+Podzielmy to zadanie na 3 osobne kroki, w tym celu podsumuj mi calosc i zwroc polecenia tak abym mogl ci je podac osobno nie tracac kontekstu, chcialbym abys precyzyjnie okreslil poszczegolne zadania:
+1. Konfiguracja API Vertex AI - Konfiguracja Google cloud (lokalnie i na serwerze), tak abym mogl bezproblemowo uzywac go na produkcji oraz lokalnie z emulatorem
+2. Swtorzenie osobnego modulu models oraz zaimplementowanie modulu
+3. Wlasciwa implementacja zalozen czyli prawdziwej funkcjolanosci
+
+Podsumuj mi w kazdym z krokow co trzeba wykonac nakreslajac kontekst zadania.
+W razie watpliwosci przerpowadz sesje z pytaniami
+
+
+================ DONE ================
+
+
+  Polecenie dla Kroku 2
+
+  Tytuł: Krok 2: Stworzenie Współdzielonego Modułu models
+
+
+  Kontekst zadania:
+  Aby zapewnić spójność typów i uniknąć duplikacji kodu między aplikacją frontendową (Angular) a backendową (Firebase Functions), stworzymy
+  dedykowaną, współdzieloną bibliotekę w naszym projekcie. Będzie ona przechowywać modele danych, takie jak interfejs Invoice. Dzięki temu
+  zarówno frontend, jak i backend będą korzystać z tego samego, jednego źródła prawdy o strukturze danych.
+
+
+  Zadania do wykonania:
+   1. Stworzenie struktury katalogów: W głównym katalogu projektu utworzymy nową ścieżkę: libs/shared/models/.
+   2. Zdefiniowanie modelu `Invoice`: W nowo utworzonym katalogu stworzymy plik invoice.model.ts i zdefiniujemy w nim interfejs Invoice,
+      zawierający pola odpowiadające danym zwracanym przez Vertex AI (np. invoiceId, supplierTaxId, invoiceDate).
+   3. Konfiguracja aliasów ścieżek w `tsconfig.json`: Zaktualizujemy pliki konfiguracyjne TypeScript, aby umożliwić łatwy import modeli z dowolnego
+      miejsca w projekcie za pomocą aliasu @shared/*. Modyfikacje zostaną wprowadzone w dwóch miejscach:
+       * W głównym pliku tsconfig.json (dla aplikacji Angular).
+       * W pliku functions/tsconfig.json (dla Firebase Functions).
+
+  ---
+
+  Polecenie dla Kroku 3
+
+
+  Tytuł: Krok 3: Implementacja Funkcji Firebase processInvoice
+
+
+  Kontekst zadania:
+  Mając w pełni skonfigurowane środowisko (Krok 1) oraz zdefiniowane modele danych (Krok 2), możemy przystąpić do implementacji kluczowej
+  funkcjonalności. Stworzymy funkcję Firebase w TypeScript, która będzie automatycznie przetwarzać faktury przesyłane przez użytkowników do
+  Cloud Storage.
+
+
+  Zadania do wykonania:
+   1. Instalacja zależności: Dodamy do pliku functions/package.json niezbędne pakiety SDK od Google: @google-cloud/documentai oraz
+      @google-cloud/storage.
+   2. Stworzenie szkieletu funkcji: W pliku functions/src/index.ts zdefiniujemy funkcję chmurową (processInvoice) wyzwalaną przez zdarzenie
+      onFinalize w Cloud Storage, która będzie nasłuchiwać na ścieżce users/{userId}/uploads/{fileName}.
+   3. Implementacja logiki:
+       * Funkcja pobierze plik z Storage i wyśle go do Vertex AI (pliki ogólnie będą graficzne, nie wiadomo czy pdf czy jpg czy cos innego)
+       * Vertex AI odczyta plik.
+       * Dokona walidacji – sprawdzi, czy istnieją kluczowe dane (invoiceDate, supplierTaxId).
+       * Zgodnie z wynikiem walidacji, wygeneruje nową nazwę pliku (obsługując logikę numeracji porządkowej, jeśli brakuje numeru faktury) i
+         przeniesie plik do katalogu proceeds.
+       * Usuniemy oryginalny plik z katalogu uploads po pomyślnym przetworzeniu.
+
+
+ ---
+  Chce abys zrealizowal ponizsze zadanie:
+  Polecenie Kontynuacji: Implementacja Numeracji Porządkowej dla Faktur
+
+
+  Tytuł: Dokończenie Logiki Nazewnictwa Plików: Numeracja Porządkowa
+
+
+  Kontekst zadania:
+  Zaimplementowaliśmy już kompletną funkcję processInvoice, która analizuje faktury za pomocą Vertex AI i
+  zmienia ich nazwy. Obecnie, jeśli funkcja nie znajdzie numeru faktury (invoiceId), wstawia w jego miejsce
+  statyczny placeholder "X". Celem tego zadania jest zastąpienie tego placeholdera dynamiczną logiką numeracji
+  porządkowej.

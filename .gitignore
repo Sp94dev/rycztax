@@ -48,3 +48,11 @@ Thumbs.db
 src/environments/environment.ts
 src/environments/environment.development.ts
 src/environments/environment.prod.ts
+firebase-seed-data/*/**
+functions/node_modules/**
+functions/node_modules
+functions/lib/**
+functions/lib
+functions/libs/**
+
+packages/app/dist/*/**
