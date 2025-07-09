@@ -1,4 +1,4 @@
-import { Component, computed, inject, model, signal } from '@angular/core';
+import { Component, inject, model, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -71,11 +71,6 @@ import { AuthService } from '../auth.service';
         >
           Powrót do logowania
         </p-button>
-        @if( errorResponse()) {
-        <p-message severity="error">
-          {{ errorResponse() }}
-        </p-message>
-        }
       </div>
     </form>
   `,
@@ -93,29 +88,10 @@ export class CreateAccountPageComponent {
   );
 
   createAccountResource = this.#authService.register(this.credentials);
-  errorResponse = computed(() => {
-    const error = this.createAccountResource.error() as Record<string, string>;
-    if (!error) return undefined;
-    return this.#getErrorCode(error['code']);
-  });
-
   createAccount() {
     const email = this.loginModel();
     const password = this.passwordModel();
     this.credentials.set({ email, password });
     this.createAccountResource.reload();
-  }
-
-  #getErrorCode(code: string | undefined) {
-    switch (code) {
-      case 'auth/user-not-found':
-        return 'Nie ma takiego użytkownika';
-      case 'auth/wrong-password':
-        return 'Błędne hasło';
-      case 'auth/invalid-email':
-        return 'Niepoprawny email';
-      default:
-        return 'Coś poszło nie tak';
-    }
   }
 }

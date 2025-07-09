@@ -25,7 +25,7 @@ export class AuthService {
   #router = inject(Router);
   #destroyRef = inject(DestroyRef);
 
-  user = user(this.#auth).pipe(tap(console.log));
+  user = user(this.#auth);
   #handleUserChange = this.user
     .pipe(
       takeUntilDestroyed(this.#destroyRef),
