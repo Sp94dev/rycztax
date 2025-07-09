@@ -1,15 +1,12 @@
 {
-  "name": "rycztax",
+  "name": "@rycztax/app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration development",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "build:functions": "rm -rf functions/lib && cd functions && npm run build && cd ..",
-    "emulators": "firebase emulators:start --only auth,firestore,storage,functions --import=./firebase-seed-data  --export-on-exit ./firebase-seed-data",
-    "dev": "npm-run-all -p start emulators"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -25,7 +22,6 @@
     "@tailwindcss/postcss": "^4.1.7",
     "canvas": "^3.1.2",
     "jspdf": "^3.0.1",
-    "npm-run-all": "^4.1.5",
     "pdfjs-dist": "^5.3.93",
     "postcss": "^8.5.3",
     "primeng": "^19.1.3",
