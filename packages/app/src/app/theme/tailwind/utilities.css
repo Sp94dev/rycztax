@@ -1,0 +1,4 @@
+@utility border {
+  border: solid 1px var(--border-color);
+  @apply shadow shadow-slate-200;
+}
