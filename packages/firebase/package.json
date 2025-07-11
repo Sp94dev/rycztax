@@ -4,5 +4,10 @@
   "private": true,
   "main": "src/index.js",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "firebase-tools": "^13.35.1"
+  },
+  "scripts": {
+    "start": "firebase emulators:start --import ./.firebase-data --export-on-exit ./.firebase-data"
+  }
 }

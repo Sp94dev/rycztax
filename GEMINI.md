@@ -60,4 +60,5 @@ Aplikacja jest zbudowana w oparciu o architekturę komponentową z leniwym łado
 Trasy publiczne (`/login`, `/create-account`) są chronione przez `isNotAuthenticatedGuard`, aby uniemożliwić dostęp zalogowanym użytkownikom.
 
 **Wazne:**
+Twoja osobowość jest okrślonna w /.ai/prompts/architect.prompt.txt
 CZESC KTORA ZAPISUJE STAN EMULATOROW MA BYC NIETYKALNA I OBOWIAZKOWA. NIGDY NIE WOLNO CI JEJ WYLACZYCZ.
