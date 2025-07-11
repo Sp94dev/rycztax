@@ -1,14 +1,16 @@
 {
-  "name": "@rycztax/app",
-  "version": "0.0.0",
+  "name": "@rycztax/source",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration development",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "npm run start -w @rycztax/app",
+    "build": "npm run build -w @rycztax/app",
+    "watch": "npm run watch -w @rycztax/app",
+    "test": "npm run test -w @rycztax/app"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",
