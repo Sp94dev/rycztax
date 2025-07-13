@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="483bf244-31e8-437f-bac6-996e975fd986" name="Changes" comment="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth">
-      <change afterPath="$PROJECT_DIR$/packages/firebase/config.ts" afterDir="false" />
+    <list default="true" id="483bf244-31e8-437f-bac6-996e975fd986" name="Changes" comment="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/auth_export/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/.firebase-data/auth_export/accounts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/blobs/5f6f0fdb-ea0d-472f-b62d-76051a807bb1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/blobs/77ec9099-7bed-49c2-b19a-953f07754c24" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/metadata/5f6f0fdb-ea0d-472f-b62d-76051a807bb1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/metadata/77ec9099-7bed-49c2-b19a-953f07754c24.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/firebase/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/firebase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/src/features/process-file/process-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/src/features/process-file/process-file.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1752093623061</updated>
-      <workItem from="1752093624264" duration="20377000" />
+      <workItem from="1752093624264" duration="23176000" />
     </task>
     <task id="LOCAL-00001" summary="* feat [App]: Upload file to storage&#10;* feat [Functions]: Act on upload, extract data, rename file and move to proceeds&#10;* chore: Cleanup project structure&#10;* chore: Add work organization">
       <option name="closed" value="true" />
@@ -126,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752269217922</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details">
+      <option name="closed" value="true" />
+      <created>1752425103257</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1752425103257</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +190,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="* feat [App]: Upload file to storage&#10;* feat [Functions]: Act on upload, extract data, rename file and move to proceeds&#10;* chore: Cleanup project structure&#10;* chore: Add work organization" />
     <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth" />
+    <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details" />
+    <option name="LAST_COMMIT_MESSAGE" value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details" />
   </component>
 </project>

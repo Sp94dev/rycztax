@@ -15,6 +15,7 @@
       ]
     }
   ],
+  "firestore": { "port": 8080 },
   "apphosting": {
     "backendId": "rycztax-web-app",
     "rootDir": "../../",
