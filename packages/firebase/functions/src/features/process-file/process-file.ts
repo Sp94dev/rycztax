@@ -1,8 +1,8 @@
-import { onObjectFinalized } from 'firebase-functions/storage';
-import { logger } from 'firebase-functions';
 import { GoogleGenAI } from '@google/genai';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import { getStorage } from 'firebase-admin/storage';
-import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { logger } from 'firebase-functions';
+import { onObjectFinalized } from 'firebase-functions/storage';
 
 
 export const processFile = onObjectFinalized({cpu: 2,region: 'europe-central2', memory: '1GiB',  secrets: ['GEMINI_API_KEY']}, async (event) => {
@@ -84,10 +84,11 @@ ZASADY:
       throw new Error('Ostateczna próba parsowania JSON nie powiodła się.');
     }
 
-    const { seller_tax_id, document_number, invoice_date } = extractedData as any;
+    const { seller_tax_id, document_number } = extractedData as any;
+    const invoice_date: string = extractedData['extractedData'].replace('-', '_');
 
     const safeDocNumber = (document_number || 'BRAK_NUMERU').replace(/[^a-zA-Z0-9-]/g, '_');
-    const newFileName = `${seller_tax_id || 'BRAK_NIP'}-${invoice_date || 'BRAK_DATY'}-${safeDocNumber}.${extension}`;
+    const newFileName = `${seller_tax_id || 'BRAK_NIP'}-${invoice_date || 'BRAK_DATY'}-${safeDocNumber}.${extension}`.replace('/', '_');
 
     const destinationPath = `users/${userId}/processed/${newFileName}`;
     await file.move(destinationPath);
@@ -110,7 +111,4 @@ ZASADY:
   } catch (error) {
    logger.error(error);
   }
-
-
-
 });
