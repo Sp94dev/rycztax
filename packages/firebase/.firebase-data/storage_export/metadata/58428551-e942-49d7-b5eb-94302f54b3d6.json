@@ -1,18 +1,18 @@
 {
-  "name": "users/ERLZb8kyrphdtjOMzgVlAH1XdQax/uploads/A1_1_2025.pdf",
+  "name": "users/ERLZb8kyrphdtjOMzgVlAH1XdQax/processed/5532512246-2025-01-29-A1_1_2025.pdf",
   "bucket": "rycztax.firebasestorage.app",
   "metageneration": 1,
-  "generation": 1752427356718,
+  "generation": 1752427880411,
   "contentType": "application/pdf",
   "storageClass": "STANDARD",
   "contentDisposition": "inline",
   "downloadTokens": [
-    "d0f3aecc-7444-45f1-a1fb-192ed12d078e"
+    "2792c72a-46cb-4394-b65e-e09d0d22098f"
   ],
-  "etag": "x4Y7qU0Hch9jqVIsQ0I/UTdC0g8",
+  "etag": "Wre5KKj0t+FK2CnH/YCLiTemYwA",
   "customMetadata": {},
-  "timeCreated": "2025-07-13T17:22:36.718Z",
-  "updated": "2025-07-13T17:22:36.718Z",
+  "timeCreated": "2025-07-13T17:31:20.411Z",
+  "updated": "2025-07-13T17:31:20.411Z",
   "size": 55923,
   "md5Hash": "7vmbrOsySxclRZ1Jko6HWQ==",
   "crc32c": "3709372108"

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="483bf244-31e8-437f-bac6-996e975fd986" name="Changes" comment="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details">
+    <list default="true" id="483bf244-31e8-437f-bac6-996e975fd986" name="Changes" comment="docs(update documentation): WIP Update MVP.md">
+      <change beforePath="$PROJECT_DIR$/.ai/mvp.md" beforeDir="false" afterPath="$PROJECT_DIR$/.ai/mvp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai/prd.md" beforeDir="false" afterPath="$PROJECT_DIR$/.ai/prd.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/auth_export/accounts.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/.firebase-data/auth_export/accounts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/blobs/5f6f0fdb-ea0d-472f-b62d-76051a807bb1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/blobs/77ec9099-7bed-49c2-b19a-953f07754c24" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/metadata/5f6f0fdb-ea0d-472f-b62d-76051a807bb1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/.firebase-data/storage_export/metadata/77ec9099-7bed-49c2-b19a-953f07754c24.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/firebase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/firebase/functions/src/features/process-file/process-file.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/firebase/functions/src/features/process-file/process-file.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,12 +22,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Sp94dev"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Sp94dev&quot;
   }
-}]]></component>
+}</component>
   <component name="GitRewordedCommitMessages">
     <option name="commitMessagesMapping">
       <RewordedCommitMessageMapping>
@@ -40,16 +38,16 @@
     <option name="currentCommit" value="1" />
     <option name="onto" value="261a3ec8c798be843e411f4661dc493003643ddb" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Sp94dev/rycztax.git",
-    "accountId": "a5bcd3d4-82b9-437a-a158-d1ed2f9d9885"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Sp94dev/rycztax.git&quot;,
+    &quot;accountId&quot;: &quot;a5bcd3d4-82b9-437a-a158-d1ed2f9d9885&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2zeZi6cq4jgxqvyiDKkvLs4gVjO" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
@@ -63,6 +61,10 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "tech/reorganize-project",
     "last_opened_file_path": "/Users/sebastianpaduch/repositories/projects/rycztax/src/environments",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "/Users/sebastianpaduch/repositories/projects/rycztax/node_modules/typescript/lib",
@@ -107,7 +109,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1752093623061</updated>
-      <workItem from="1752093624264" duration="23176000" />
+      <workItem from="1752093624264" duration="26517000" />
+      <workItem from="1752482186488" duration="4610000" />
     </task>
     <task id="LOCAL-00001" summary="* feat [App]: Upload file to storage&#10;* feat [Functions]: Act on upload, extract data, rename file and move to proceeds&#10;* chore: Cleanup project structure&#10;* chore: Add work organization">
       <option name="closed" value="true" />
@@ -133,7 +136,23 @@
       <option name="project" value="LOCAL" />
       <updated>1752425103257</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat(process file): Extract invoice data, move to proceeds directory and save in firestore">
+      <option name="closed" value="true" />
+      <created>1752427972412</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1752427972412</updated>
+    </task>
+    <task id="LOCAL-00005" summary="docs(update documentation): WIP Update MVP.md">
+      <option name="closed" value="true" />
+      <created>1752483643729</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1752483643729</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +210,8 @@
     <MESSAGE value="* feat [App]: Upload file to storage&#10;* feat [Functions]: Act on upload, extract data, rename file and move to proceeds&#10;* chore: Cleanup project structure&#10;* chore: Add work organization" />
     <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth" />
     <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details" />
-    <option name="LAST_COMMIT_MESSAGE" value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details" />
+    <MESSAGE value="feat(process file): Extract invoice data, move to proceeds directory and save in firestore" />
+    <MESSAGE value="docs(update documentation): WIP Update MVP.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="docs(update documentation): WIP Update MVP.md" />
   </component>
 </project>
