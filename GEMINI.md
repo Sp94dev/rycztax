@@ -15,6 +15,9 @@ Pełny zakres funkcjonalny, wymagania i cele biznesowe projektu są zdefiniowane
 
 ## 3. Stos Technologiczny
 
+Pełny opis stosu technologicznego oraz wytycznych inżynierskich znajduje się w pliku **[.ai/tech-stack.md](./.ai/tech-stack.md)**.
+
+Kluczowe elementy:
 - **Framework Frontendowy:** Angular
 - **UI Kit / Stylowanie:** PrimeNG, Tailwind CSS
 - **Backend i Baza Danych:** Firebase (Firestore, Storage, Authentication, Cloud Functions)

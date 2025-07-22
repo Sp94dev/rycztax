@@ -15,22 +15,25 @@
       ]
     }
   ],
-  "firestore": { "port": 8080 },
-  "apphosting": {
-    "backendId": "rycztax-web-app",
-    "rootDir": "../../",
+  "hosting": {
+    "public": "public/browser",
     "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "functions"
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   },
   "storage": {
     "rules": "storage.rules"
   },
   "emulators": {
+    "firestore": { "port": 8081 },
     "auth": {
       "port": 9099
     },

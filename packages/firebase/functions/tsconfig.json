@@ -12,6 +12,7 @@
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "node_modules/@google-cloud/firestore/types/firestore.d.ts",
   ]
 }

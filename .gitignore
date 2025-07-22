@@ -106,3 +106,6 @@ dist
 # Angular
 .angular/
 dist/
+/.idea/
+packages/firebase/.firebase-data
+packages/firebase/public
