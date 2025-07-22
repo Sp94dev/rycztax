@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="483bf244-31e8-437f-bac6-996e975fd986" name="Changes" comment="docs(update documentation): WIP Update MVP.md">
+      <change beforePath="$PROJECT_DIR$/.ai/mvp.md" beforeDir="false" afterPath="$PROJECT_DIR$/.ai/mvp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ai/prd.md" beforeDir="false" afterPath="$PROJECT_DIR$/.ai/prd.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GEMINI.md" beforeDir="false" afterPath="$PROJECT_DIR$/GEMINI.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1752093623061</updated>
       <workItem from="1752093624264" duration="26517000" />
-      <workItem from="1752482186488" duration="5968000" />
+      <workItem from="1752482186488" duration="4610000" />
     </task>
     <task id="LOCAL-00001" summary="* feat [App]: Upload file to storage&#10;* feat [Functions]: Act on upload, extract data, rename file and move to proceeds&#10;* chore: Cleanup project structure&#10;* chore: Add work organization">
       <option name="closed" value="true" />
@@ -151,15 +152,7 @@
       <option name="project" value="LOCAL" />
       <updated>1752483643729</updated>
     </task>
-    <task id="LOCAL-00006" summary="docs(update documentation): WIP Update MVP.md">
-      <option name="closed" value="true" />
-      <created>1752487678415</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1752487678415</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +211,6 @@
     <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth" />
     <MESSAGE value="* chore: Cleanup project structure&#10;* feat(auth): Initialize firebase auth&#10;* feat(process file): Read file and log details" />
     <MESSAGE value="feat(process file): Extract invoice data, move to proceeds directory and save in firestore" />
-    <MESSAGE value="docs(update documentation): Update mvp.md and prd.md" />
     <MESSAGE value="docs(update documentation): WIP Update MVP.md" />
     <option name="LAST_COMMIT_MESSAGE" value="docs(update documentation): WIP Update MVP.md" />
   </component>
