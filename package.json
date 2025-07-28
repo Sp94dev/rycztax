@@ -8,7 +8,7 @@
     "ng": "ng",
     "start:app": "npm run start -w @rycztax/app",
     "start:emulators": "npm run start -w @rycztax/firebase",
-    "start:dev": "npm-run-all --parallel start -w @rycztax/app\" \"emulators:start -w @rycztax/firebase\"",
+    "start:dev": "npm-run-all --parallel start:app start:emulators",
     "build": "npm run build -w @rycztax/app",
     "watch": "npm run watch -w @rycztax/app",
     "test": "npm run test -w @rycztax/app"
