@@ -2,62 +2,43 @@
 
 ## 1. Cel i Wizja
 
-Rycztax to aplikacja PWA (Progresywna Aplikacja Webowa) stworzona z myślą o freelancerach i właścicielach mikro-firm w Polsce. Jej głównym celem jest zautomatyzowanie procesu zarządzania fakturami kosztowymi.
+Rycztax to aplikacja PWA (Progresywna Aplikacja Webowa), której celem jest zautomatyzowanie procesu zarządzania fakturami kosztowymi dla polskich przedsiębiorców.
 
-**Wizja:** Aplikacja ma działać jak inteligentny asystent, który po zrobieniu zdjęcia faktury:
+**Wizja:** Aplikacja działa jako inteligentny asystent. Po wgraniu pliku z fakturą, **Rdzeń Przetwarzania Dokumentów (Core Processing Engine)**, działający jako modularna usługa w backendzie, automatycznie przetwarza dokument, organizuje go i przygotowuje do dalszego użytku.
 
-- Automatycznie odczytuje kluczowe dane (NIP, daty, kwoty, etc.) za pomocą modeli językowych (LLM).
-- Generuje ustandaryzowaną nazwę dla pliku.
-- Bezpiecznie przechowuje dokumenty.
-- Ułatwia ich eksport i przekazanie do księgowości.
+## 2. Wymagania i Zakres Produktu
 
-## 2. Kluczowe Funkcjonalności (MVP)
+Pełny zakres funkcjonalny, wymagania i cele biznesowe projektu są zdefiniowane w poniższych dokumentach. Stanowią one jedyne źródło prawdy (Single Source of Truth) na temat tego, co budujemy.
 
-- **Uwierzytelnianie:** Bezpieczna rejestracja i logowanie użytkowników.
-- **Przesyłanie Dokumentów:** Możliwość dodania faktury przez zrobienie zdjęcia (mobile) lub wgranie pliku (desktop).
-- **Automatyczna Ekstrakcja Danych:** System wykorzystuje AI do odczytania danych z faktury i automatycznego nazwania pliku w formacie `RRRR-MM-DD_NIP-WYSTAWCY_NR-FAKTURY.pdf`.
-- **Weryfikacja Danych:** Jeśli AI ma niską pewność co do odczytanych danych, użytkownik jest o tym informowany i może je łatwo poprawić.
-- **Zarządzanie Dokumentami:** Przejrzysta lista wszystkich dokumentów z możliwością sortowania i filtrowania.
-- **Eksport Miesięczny:** Funkcja pobierania paczki `.zip` ze wszystkimi dokumentami z wybranego miesiąca.
+- **Minimalny Zestaw Funkcjonalności:** Zobacz plik **[MVP.md](./MVP.md)**.
+- **Pełny Kontekst Produktowy:** Zobacz plik **[PRD.md](./PRD.md)**.
 
 ## 3. Stos Technologiczny
 
-- **Framework Frontendowy:** Angular (wersja ~19.2.0)
-- **UI Kit / Stylowanie:**
-  - PrimeNG
-  - Tailwind CSS
-  - `tailwindcss-primeui` do integracji obu bibliotek.
-- **Backend / Baza Danych:** Firebase (`@angular/fire`)
-- **Testowanie:** Karma, Jasmine
-- **Zależności kluczowe:** `rxjs`, `zone.js`, `tslib`
+Pełny opis stosu technologicznego oraz wytycznych inżynierskich znajduje się w pliku **[.ai/tech-stack.md](./.ai/tech-stack.md)**.
+
+Kluczowe elementy:
+- **Framework Frontendowy:** Angular
+- **UI Kit / Stylowanie:** PrimeNG, Tailwind CSS
+- **Backend i Baza Danych:** Firebase (Firestore, Storage, Authentication, Cloud Functions)
+- **Kluczowe Zależności:** `@angular/fire`, `rxjs`, `zone.js`, `tslib`
 
 ## 4. Struktura Projektu i Polecenia
 
-- **Kod źródłowy:** `src/`
-- **Główny komponent:** `src/app/app.component.ts`
-- **Routing:** `src/app/app.routes.ts`
-- **Logika biznesowa (features):** `src/app/features/` (np. `auth`, `files`, `home`)
-- **Style globalne:** `src/styles.css`
-- **Konfiguracja TypeScript:** `tsconfig.json`
-- **Konfiguracja Angulara:** `angular.json`
+Projekt jest zorganizowany jako **monorepo**, aby oddzielić od siebie poszczególne części systemu.
 
-### Najważniejsze Skrypty (`package.json`):
+- `packages/app` -> Aplikacja frontendowa w Angularze. Tutaj znajduje się cała logika interfejsu użytkownika.
+- `packages/firebase` -> Konfiguracja i logika backendowa Firebase. Zawiera Cloud Functions (w tym Rdzeń Przetwarzania Dokumentów), reguły bezpieczeństwa Firestore, reguły Storage.
+- `packages/shared` -> Współdzielony kod, głównie definicje typów i interfejsów (np. `interface Invoice`), które są używane zarówno przez frontend (`app`), jak i backend (`firebase`).
 
-- **Uruchomienie serwera deweloperskiego:** `npm start` (lub `ng serve`)
+### Najważniejsze Skrypty (`package.json` w głównym katalogu):
+
+- **Uruchomienie serwera deweloperskiego (Angular):** `npm start`
 - **Budowanie aplikacji produkcyjnej:** `npm run build`
 - **Uruchomienie testów jednostkowych:** `npm test`
+- **Wdrożenie funkcji Firebase:** `npm run deploy:firebase` (lub podobne, zdefiniowane w projekcie)
 
-## 5. Architektura i Routing
-
-Aplikacja jest zbudowana w oparciu o architekturę komponentową z leniwym ładowaniem (lazy loading) dla poszczególnych widoków, co jest zdefiniowane w `src/app/app.routes.ts`.
-
-**Główne ścieżki:**
-
-- `/login`: Strona logowania.
-- `/create-account`: Strona tworzenia konta.
-- `/dashboard`: Główny panel po zalogowaniu, chroniony przez `isAuthenticatedGuard`.
-
-Trasy publiczne (`/login`, `/create-account`) są chronione przez `isNotAuthenticatedGuard`, aby uniemożliwić dostęp zalogowanym użytkownikom.
-
+---
 **Wazne:**
+Twoja osobowość jest okrślonna w /.ai/prompts/architect.prompt.txt
 CZESC KTORA ZAPISUJE STAN EMULATOROW MA BYC NIETYKALNA I OBOWIAZKOWA. NIGDY NIE WOLNO CI JEJ WYLACZYCZ.

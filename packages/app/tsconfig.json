@@ -18,9 +18,10 @@
     "target": "ES2022",
     "module": "ES2022",
     "paths": {
-      "shared/*": ["./src/app/shared/*"],
+      "@rycztax/shared/*": ["../../packages/shared/*"],
+      "@rycztax/firebase/*": ["../../packages/firebase/*"],
       "auth/*": ["./src/app/features/auth/*"],
-      "@shared/*": ["./libs/shared/*"]
+      "shared/*": ["./src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

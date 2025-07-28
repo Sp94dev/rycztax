@@ -91,3 +91,12 @@ Oficjalny, kompletny stos technologiczny projektu jest następujący:
 - **Fokusowane Commity:** Każdy commit reprezentuje jedną, logiczną zmianę. Unikamy wielkich commitów z wieloma niepowiązanymi zmianami.
 - **Przejrzysta Historia:** Używamy `git rebase -i` do czyszczenia i porządkowania historii commitów na branchu funkcyjnym przed jego zmergowaniem do `main`.
 - **Git Hooks:** Wykorzystujemy hooki (np. `pre-commit` z husky) do uruchamiania lintera lub testów przed wykonaniem commita.
+
+## 5. Podsumowanie Wykonanych Prac
+
+W ramach ostatnich działań, wprowadzono następujące kluczowe zmiany i ulepszenia:
+
+*   **Konfiguracja Emulatorów Firebase:** Poprawiono konfigurację emulatorów Firestore w `packages/app/src/app/app.config.ts` oraz uzupełniono `apphosting.emulator.yaml` o poprawne porty dla emulatorów Auth, Firestore i Storage. Zapewnia to stabilne środowisko deweloperskie i testowe.
+*   **Usprawnienie Pobierania Danych z Firestore:** Zaimplementowano deklaratywne podejście do pobierania i filtrowania danych z Firestore w `packages/app/src/app/features/files/pages/files.page.component.ts`. Wykorzystano reaktywne strumienie RxJS (`Observable`) oraz funkcje `query` i `where` do dynamicznego filtrowania faktur (np. po statusie 'processed'), zgodnie z zasadami programowania funkcyjnego i reaktywnego.
+*   **Aktualizacja Wytycznych Architektonicznych:** Zaktualizowano plik `.ai/prompts/architect.prompt.txt`, aby odzwierciedlał preferencje dotyczące deklaratywnego programowania funkcyjnego, użycia Angular Signals (zamiast inicjalizacji stanu w konstruktorze) oraz reaktywnych strumieni danych z czystymi funkcjami.
+*   **Optymalizacja Procesu Wdrożenia:** Przeanalizowano istniejącą strukturę monorepo i skrypty, a następnie zoptymalizowano instrukcje wdrożenia aplikacji na Firebase, wykorzystując istniejące skrypty `npm run build` i `firebase deploy` z odpowiednich katalogów.

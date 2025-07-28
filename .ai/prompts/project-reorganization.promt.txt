@@ -1,0 +1,14 @@
+
+============= Reorganizacja projektu =============
+
+
+przeorganizuj mi ten projekt w nastepujacy sposob:
+ - ma uzywac npm workspaces
+ - wszystkie moduly maja sie znalesc w katalogu /packages
+ - na ten moment maja byc tam nastepujace moduly:
+    - app -> aplikacja angularowa
+    - firebase -> wszystkie elementy firebase jak auth, firestore, funtions sotorage i co bedzie potrzebne
+    - shared -> modul zawierajacy czesci wspolne jak modele, utilsy stale etc
+
+
+

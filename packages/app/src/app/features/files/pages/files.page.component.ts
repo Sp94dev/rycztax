@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
 import { AuthService } from 'auth/auth.service';
 import { ref, uploadBytes } from 'firebase/storage';
@@ -9,7 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { Observable } from 'rxjs';
+import { filter, map, Observable, of, tap } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   imports: [
@@ -38,6 +39,7 @@ import { Observable } from 'rxjs';
       </ng-template>
       <ng-template #header>
         <tr>
+          <td>Nazwa pliku</td>
           <td>NIP</td>
           <td>Data</td>
           <td>Kwota Brutto</td>
@@ -46,9 +48,10 @@ import { Observable } from 'rxjs';
       </ng-template>
       <ng-template pTemplate="body" let-invoice>
         <tr>
-          <td>{{ invoice.nip }}</td>
-          <td>{{ invoice.saleDate }}</td>
-          <td>{{ invoice.grossAmount }}</td>
+          <td>{{ invoice.filePath }}</td>
+          <td>{{ invoice.sellerTaxId }}</td>
+          <td>{{ invoice.invoiceDate }}</td>
+          <td>{{ invoice.documentNumber }}</td>
           <td></td>
         </tr>
       </ng-template>
@@ -66,14 +69,17 @@ export class FilesPageComponent {
   private authService = inject(AuthService);
 
   #user = toSignal(this.authService.user);
+  #userId$ = this.authService.user.pipe(
+    filter(user => !!user),
+    map(user => user?.uid),
+  )
 
-  selectedFile: File | null = null;
-  invoices$: Observable<any[]>;
+  collection$ = this.#userId$.pipe(map((userId) => collection(this.firestore, `users/${userId}/invoices`)))
+  invoices$ = this.collection$.pipe(switchMap(collection => {
+    const q = query(collection, where('status' , '==', 'processed'));
 
-  constructor() {
-    const invoiceCollection = collection(this.firestore, 'invoices');
-    this.invoices$ = collectionData(invoiceCollection);
-  }
+    return collectionData(q)
+  }), tap(console.log))
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
