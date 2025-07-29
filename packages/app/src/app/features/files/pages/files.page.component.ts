@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Firestore, collection, collectionData, query, where } from '@angular/fire/firestore';
+import { Component, effect, inject, signal } from '@angular/core';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { collection, collectionData, Firestore, query, where } from '@angular/fire/firestore';
 import { Storage } from '@angular/fire/storage';
 import { AuthService } from 'auth/auth.service';
 import { ref, uploadBytes } from 'firebase/storage';
@@ -9,8 +9,10 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { filter, map, Observable, of, tap } from 'rxjs';
+import { combineLatest, filter, map } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { DatePicker } from 'primeng/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   imports: [
@@ -19,21 +21,22 @@ import { switchMap } from 'rxjs/operators';
     TableModule,
     InputTextModule,
     ToastModule,
+    DatePicker,
+    FormsModule,
   ],
   template: `
     <input
       #fileInput
-      type="file"
-      (change)="onFileSelected($event)"
-      style="display: none"
       multiple
+      type="file"
+      class="hidden"
+      (change)="onFileSelected($event)"
     />
     <p-table [value]="(invoices$ | async) || []">
       <ng-template #caption>
-        <div
-          style="display: flex; flexDirection: end; justifyContent: end"
-          class="flex justify-content-end"
-        >
+        <div class="flex flex-row justify-between items-center">
+          <p-datepicker [ngModel]="visiblePeriod()" (ngModelChange)="visiblePeriod.set($event)" view="month"
+                        dateFormat="mm/yy" selectionMode="single" [readonlyInput]="true" />
           <p-button (click)="fileInput.click()">Dodaj plik</p-button>
         </div>
       </ng-template>
@@ -68,18 +71,40 @@ export class FilesPageComponent {
   private firestore: Firestore = inject(Firestore);
   private authService = inject(AuthService);
 
+  visiblePeriod = signal<Date>(new Date());
   #user = toSignal(this.authService.user);
   #userId$ = this.authService.user.pipe(
     filter(user => !!user),
     map(user => user?.uid),
-  )
+  );
 
-  collection$ = this.#userId$.pipe(map((userId) => collection(this.firestore, `users/${userId}/invoices`)))
-  invoices$ = this.collection$.pipe(switchMap(collection => {
-    const q = query(collection, where('status' , '==', 'processed'));
+  visiblePeriod$ = toObservable<Date>(this.visiblePeriod).pipe(
+    map(period => {
+      const year = period.getFullYear();
+      const month = period.getMonth() + 1;
+      const startOfMonth = `${year}-${month.toString().padStart(2, '0')}`;
 
-    return collectionData(q)
-  }), tap(console.log))
+      const nextMonthDate = new Date(period);
+      nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
+      const nextMonthYear = nextMonthDate.getFullYear();
+      const nextMonth = nextMonthDate.getMonth() + 1;
+      const startOfNextMonth = `${nextMonthYear}-${nextMonth.toString().padStart(2, '0')}`;
+
+      return { startOfMonth, startOfNextMonth };
+    }),
+  );
+  collection$ = this.#userId$.pipe(map((userId) => collection(this.firestore, `users/${userId}/invoices`)));
+  invoices$ = combineLatest(([this.collection$, this.visiblePeriod$])).pipe(switchMap(([collection, periodData]) => {
+
+    const q = query(
+      collection,
+      where('status', '==', 'processed'),
+      where('invoiceDate', '>=', periodData.startOfMonth),
+      where('invoiceDate', '<', periodData.startOfNextMonth));
+
+    return collectionData(q);
+  }));
+
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
